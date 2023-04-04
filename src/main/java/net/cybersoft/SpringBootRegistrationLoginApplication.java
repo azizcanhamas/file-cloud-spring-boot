@@ -1,4 +1,4 @@
-package net.sibertek;
+package net.cybersoft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
