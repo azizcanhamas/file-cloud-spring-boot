@@ -2,9 +2,12 @@ package net.cybersoft.Controller;
 
 import java.util.List;
 
+import net.cybersoft.Entity.ImageData;
 import net.cybersoft.Entity.User;
+import net.cybersoft.Repository.StorageRepository;
 import net.cybersoft.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +21,13 @@ public class AppController {
 	@Autowired
 	private UserRepository userRepo;
 
+	@Autowired
+	private StorageRepository storageRepo;
+
 	// http://localhost:8080 linki ile
 	// gelindiginde login'e yonlendir.
 	@GetMapping("")
-	public String viewHomePage() {
+	public String viewLoginPage() {
 		return "login";
 	}
 
@@ -53,8 +59,8 @@ public class AppController {
 	// Thymeleaf'e geri gonderilir.
 	@GetMapping("/home")
 	public String listUsers(Model model) {
-		List<User> listUsers = userRepo.findAll();
-		model.addAttribute("listUsers", listUsers);
+		List<ImageData> files = storageRepo.findByFileOwner(SecurityContextHolder.getContext().getAuthentication().getName());
+		model.addAttribute("files", files);
 		return "home";
 	}
 }

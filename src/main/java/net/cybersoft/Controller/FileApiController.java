@@ -33,6 +33,7 @@ public class FileApiController {
                 .body(uploadImage);
     }
 
+
     // Resimlerin GET yoluyla istenebilmesi http://localhost:9191/image/intel.jpg
     // gibi URL adresi cagrilmalidir.
     @GetMapping("/{fileName}")
@@ -41,7 +42,6 @@ public class FileApiController {
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(imageData);
-
     }
 
 }

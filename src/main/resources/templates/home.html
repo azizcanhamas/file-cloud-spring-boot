@@ -19,7 +19,7 @@
             <!-- ================= Upload Section ========================= -->
             <div class="col-md-5" id="upload_box">
               
-              <form class="text-center border border-light p-5" enctype="multipart/form-data" method="post" th:action="@{/uploadImage}">
+              <form class="text-center border border-light" enctype="multipart/form-data" method="post" th:action="@{/uploadImage}">
               
               <label for="images" class="drop-container">
                 <img class="col-md-2" src="images/rocket.png">
@@ -28,7 +28,7 @@
                 <input type="file" id="image" name="image" required> <!-- accept="image/*" -->
               </label>
 
-              <input type="submit" value="Yükle" class="btn btn-danger" />
+              <input type="submit" id="yukleButton" value="Yükle" class="btn btn-danger" />
 
 
               </form>
@@ -68,7 +68,7 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      <tr>
+                                      <!-- <tr>
                                           <td>
                                               <ul class="action-list">
                                                   <li><a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
@@ -77,7 +77,23 @@
                                           </td>
                                           <td>1</td>
                                           <td>video.mp4</td>                                        
-                                      </tr> 
+                                      </tr>  -->
+
+
+                                      <tr th:each="file : ${files}">
+                                        <td>
+                                            <ul class="action-list">
+                                                <li><a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
+                                                <li><a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a></li>
+                                            </ul>
+                                        </td>
+                                        <td>[[*{file.id}]]</td>
+                                        <td>[[*{file.name}]]</td>                                        
+                                    </tr>
+
+
+
+
                                   </tbody>
                               </table>
                           </div>

@@ -1,6 +1,6 @@
 /*=============== Drop Section ===================*/
 .drop-container {
-  background-color: rgba(255, 193, 7,0.5);
+  background-color: rgba(255, 193, 7);
   position: relative;
   display: flex;
   gap: 10px;
@@ -31,6 +31,10 @@
   font-weight: bold;
   text-align: center;
   transition: color .2s ease-in-out;
+}
+
+#yukleButton{
+  width: 100%;
 }
 
 /* ============= List Section =========== */
