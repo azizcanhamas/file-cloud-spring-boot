@@ -6,19 +6,27 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
-	<groupId>net.codejava</groupId>
+	<groupId>net.cybersoft</groupId>
 	<artifactId>SpringBootRegistrationLogin</artifactId>
 	<version>1.0</version>
 	<name>SpringBootRegistrationLogin</name>
-	<description>Demo registration (sign up) and Login (Sign in)</description>
+	<description>File Cloud Service</description>
 
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

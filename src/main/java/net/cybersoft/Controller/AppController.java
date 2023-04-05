@@ -1,7 +1,9 @@
-package net.cybersoft;
+package net.cybersoft.Controller;
 
 import java.util.List;
 
+import net.cybersoft.Entity.User;
+import net.cybersoft.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;

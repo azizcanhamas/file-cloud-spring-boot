@@ -2,6 +2,7 @@ package net.cybersoft;
 
 import javax.sql.DataSource;
 
+import net.cybersoft.Service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,16 +50,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/users").authenticated()
 			.anyRequest().permitAll()
 			.and()
-			.formLogin()
-				.loginPage("/login")
-				.usernameParameter("username")
-				.passwordParameter("password")
-				.loginProcessingUrl("/process-login")
-				.defaultSuccessUrl("/home")
-				.permitAll()
+				.formLogin()
+					.loginPage("/login")
+					.usernameParameter("username")
+					.passwordParameter("password")
+					.loginProcessingUrl("/process-login")
+					.defaultSuccessUrl("/home")
+					.permitAll()
 			.and()
-			.logout().logoutSuccessUrl("/").permitAll();
+				.logout().logoutSuccessUrl("/").permitAll()
+			//API Authentication Enable
+			.and()
+				.cors().and().csrf().disable();
 	}
-	
-	
 }

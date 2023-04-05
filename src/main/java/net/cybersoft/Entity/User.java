@@ -1,4 +1,4 @@
-package net.cybersoft;
+package net.cybersoft.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

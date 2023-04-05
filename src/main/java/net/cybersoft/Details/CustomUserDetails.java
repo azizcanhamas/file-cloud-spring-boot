@@ -1,7 +1,8 @@
-package net.cybersoft;
+package net.cybersoft.Details;
 
 import java.util.Collection;
 
+import net.cybersoft.Entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

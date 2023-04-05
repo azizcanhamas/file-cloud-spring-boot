@@ -1,5 +1,8 @@
-package net.cybersoft;
+package net.cybersoft.Service;
 
+import net.cybersoft.Details.CustomUserDetails;
+import net.cybersoft.Entity.User;
+import net.cybersoft.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
