@@ -16,10 +16,10 @@ import java.util.Optional;
 public class StorageService {
 
     @Autowired
-    private StorageRepository repository;
+    private StorageRepository storageRepo;
 
     public String uploadImage(MultipartFile file) throws IOException {
-        ImageData imageData = repository.save(ImageData.builder()
+        ImageData imageData = storageRepo.save(ImageData.builder()
                         .fileowner(SecurityContextHolder.getContext().getAuthentication().getName())
                 .name(file.getOriginalFilename())
                 .type(file.getContentType())
@@ -33,7 +33,7 @@ public class StorageService {
     public byte[] downloadImage(String fileName){
         // Resmin veritabaninda olma durumu sorgulaniyor.
         // Eger dosya varsa decompress (cozumlenip) return ediliyor.
-        Optional<ImageData> dbImageData = repository.findByName(fileName);
+        Optional<ImageData> dbImageData = storageRepo.findByName(fileName);
 
         // "No Value Present" hatasi icin cozum
         // Eger gecerli bir deger varsa
@@ -42,7 +42,12 @@ public class StorageService {
             return images;
         }
         else return null;
+    }
 
+    // Dosyaya ait ID bilgisi ile dosya silme
+    public void deleteImageDataById(Long id)
+    {
+        storageRepo.deleteById(id);
     }
 
 }

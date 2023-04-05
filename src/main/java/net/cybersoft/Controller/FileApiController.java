@@ -17,10 +17,10 @@ import java.io.IOException;
 public class FileApiController {
 
     @Autowired
-    private StorageService service;
+    private StorageService storageService;
 
-    // Resimlerin POST yontemiyle gonderilmesi icin
-    // http://localhost:9191/image adresi body kisminda
+    // Postman ile resimlerin POST yontemiyle gonderilmesi icin
+    // http://localhost:9191/uploadImage adresi body kisminda
     // form-data olarak Key:image Value: resim.jpg seklinde
     // istek atilmalidir.
     @PostMapping("/uploadImage")
@@ -28,20 +28,27 @@ public class FileApiController {
         // StorageService servisindeki uploadImage
         // fonksiyonu upload isleminin gerceklesmesi
         // icin dosya ile cagriliyor.
-        String uploadImage = service.uploadImage(file);
+        String uploadImage = storageService.uploadImage(file);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
     }
 
-
     // Resimlerin GET yoluyla istenebilmesi http://localhost:9191/image/intel.jpg
     // gibi URL adresi cagrilmalidir.
-    @GetMapping("/{fileName}")
+    @GetMapping("/{fileName}")// ========== KULLANILMAYAN METOT
     public ResponseEntity<?> downloadImage(@PathVariable String fileName){
-        byte[] imageData=service.downloadImage(fileName);
+        byte[] imageData=storageService.downloadImage(fileName);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(imageData);
+    }
+
+    //Kullaniciya ait bir dosyanin silinmesi icin
+    @GetMapping(value = "/delete/{id}")
+    public String deleteFile(@PathVariable("id")Long id)
+    {
+        storageService.deleteImageDataById(id);
+        return "redirect:/home";
     }
 
 }
