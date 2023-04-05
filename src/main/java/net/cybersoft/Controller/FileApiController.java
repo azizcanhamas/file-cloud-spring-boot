@@ -24,20 +24,19 @@ public class FileApiController {
     // form-data olarak Key:image Value: resim.jpg seklinde
     // istek atilmalidir.
     @PostMapping("/uploadImage")
-    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file) throws IOException {
+    public String uploadImage(@RequestParam("image") MultipartFile file) throws IOException {
         // StorageService servisindeki uploadImage
         // fonksiyonu upload isleminin gerceklesmesi
         // icin dosya ile cagriliyor.
-        String uploadImage = storageService.uploadImage(file);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(uploadImage);
+        storageService.uploadImage(file);
+        return "redirect:/home";
     }
 
     // Resimlerin GET yoluyla istenebilmesi http://localhost:9191/image/intel.jpg
     // gibi URL adresi cagrilmalidir.
-    @GetMapping("/{fileName}")// ========== KULLANILMAYAN METOT
-    public ResponseEntity<?> downloadImage(@PathVariable String fileName){
-        byte[] imageData=storageService.downloadImage(fileName);
+    @GetMapping("/get/{id}")
+    public ResponseEntity<?> downloadImage(@PathVariable Long id){
+        byte[] imageData=storageService.downloadImage(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("image/png"))
                 .body(imageData);

@@ -18,22 +18,23 @@ public class StorageService {
     @Autowired
     private StorageRepository storageRepo;
 
-    public String uploadImage(MultipartFile file) throws IOException {
+    public void uploadImage(MultipartFile file) throws IOException {
         ImageData imageData = storageRepo.save(ImageData.builder()
                         .fileowner(SecurityContextHolder.getContext().getAuthentication().getName())
                 .name(file.getOriginalFilename())
                 .type(file.getContentType())
                 .imageData(ImageUtils.compressImage(file.getBytes())).build());
-        if (imageData != null) {
-            return "Dosya yukleme islemi basarili : " + file.getOriginalFilename();
-        }
-        return null;
+        //Bildirim mesaji dondurmesin
+//        if (imageData != null) {
+//            return "Dosya yukleme islemi basarili : " + file.getOriginalFilename();
+//        }
+//        return null;
     }
 
-    public byte[] downloadImage(String fileName){
+    public byte[] downloadImage(Long id){
         // Resmin veritabaninda olma durumu sorgulaniyor.
         // Eger dosya varsa decompress (cozumlenip) return ediliyor.
-        Optional<ImageData> dbImageData = storageRepo.findByName(fileName);
+        Optional<ImageData> dbImageData = storageRepo.findById(id);
 
         // "No Value Present" hatasi icin cozum
         // Eger gecerli bir deger varsa
