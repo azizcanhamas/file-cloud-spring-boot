@@ -1,0 +1,50 @@
+YAZILMAMIS GUNLER ICIN PLANLAMA
+===========================================================================
++ 1- Login, registration, home page tasarimi
++ 2- Thymeleaf şablon motoru ile HTML şablonlarının dinamikleştirilmesi
++ 3- Spring Security konfigürasyonlarının oluşturulması
++ 4- Kullanıcı yapısının oluşturulması
+
++ -Yönlendirmeler / Login-Register isteklerinin karşılanması
++ 5- Dosya yükleme ve indirme işlemlerinin geliştirilmesi
++ 6- Kullaniciya ait yüklü dosyaların listelenmesi ve silme işleminin geliştirilmesi
+7- POSTMAN ile API servislerinin genel hatlarıyla test edilmesi
+
+
+
+EKSIK KALANLAR
+===========================================================================
+   NOT: Staj icin uygulanmasina gerek yok. Projeyi gelistirmek icin yapilabilir.
+	* Kullanıcılar için dosya sınırının tanımlanması
+	* "Dosya yükleniyor..." benzerinde dinamik bir bildirim
+	* Popup pencereleri (Dosya silme, "Dosya yüklendi!" vb.)
+	
+	İleri Seviye:
+		* Spring Security ile kullanıcı yetkilendirme
+		* Caching (Redis)
+		* Message Queries (Kafka vb.)
+
+
+
+GENEL NOTLAR
+===========================================================================
+(Uygulandı) N1- HTML-CSS dosyalarının Spring Boot ile entegrasyon
+	https://www.geeksforgeeks.org/spring-boot-thymeleaf-with-example/
+	https://www.javatpoint.com/spring-boot-thymeleaf-view
+
+(Uygulandı) N2- Spring Boot ile H2 InMemory Database kullanımı
+	https://www.bezkoder.com/spring-boot-jpa-h2-example/
+
+(Uygulandı) N3- Spring Boot'ta Spring Security ile Login Panel
+	https://www.youtube.com/watch?v=aRLoSDOlU3w&ab_channel=CodeJava
+	Google "spring boot login panel example"
+	Google "spring boot login panel example github"
+
+(Uygulandı) N4- Spring Boot Upload-Download to Database
+	https://www.youtube.com/watch?v=XUL60-Ke-L8&ab_channel=JavaTechie
+
+(Uygulandı) N4- "spring boot image upload"
+	https://www.youtube.com/watch?v=br0rN6hFvCE&ab_channel=WriteCodeWithPrince
+	https://www.youtube.com/watch?v=dQn3VxcTYCM&ab_channel=LearnCodeWithDurgesh
+
+(xxxxxxxxx) N4- JWT(JSON Web Token) konusuna bakılabilir.
